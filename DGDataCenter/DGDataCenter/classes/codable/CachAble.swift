@@ -29,7 +29,7 @@ extension CachAble {
         save(key: key, cacheLevel: CacheLevel.memory)
     }
     
-    func save(key: String, cacheLevel: CacheLevel) {
-        g_cache_container?.setObject(<#T##object: NSCoding?##NSCoding?#>, forKey: <#T##String#>)
-    }
+//    func save(key: String, cacheLevel: CacheLevel) {
+//        g_cache_container?.setObject(<#T##object: NSCoding?##NSCoding?#>, forKey: <#T##String#>)
+//    }
 }

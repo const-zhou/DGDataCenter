@@ -16,6 +16,8 @@
 		834992DA22D5FF2800ECC1E6 /* Recordable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992D922D5FF2800ECC1E6 /* Recordable.swift */; };
 		834992DC22D6017F00ECC1E6 /* CachAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992DB22D6017F00ECC1E6 /* CachAble.swift */; };
 		834992DE22D6084D00ECC1E6 /* DGMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */; };
+		834992FC22DC1F7800ECC1E6 /* CZMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */; };
+		834992FE22DC99AE00ECC1E6 /* CZDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +32,8 @@
 		834992D922D5FF2800ECC1E6 /* Recordable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordable.swift; sourceTree = "<group>"; };
 		834992DB22D6017F00ECC1E6 /* CachAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachAble.swift; sourceTree = "<group>"; };
 		834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGMemoryCache.swift; sourceTree = "<group>"; };
+		834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZMemoryCache.swift; sourceTree = "<group>"; };
+		834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZDiskCache.swift; sourceTree = "<group>"; };
 		A9E1A99F84016E40DBFEFFBD /* Pods_DGDataCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGDataCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD078ED2039F18FB3694887C /* Pods-DGDataCenter.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGDataCenter.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DGDataCenter/Pods-DGDataCenter.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +104,8 @@
 				834992D922D5FF2800ECC1E6 /* Recordable.swift */,
 				834992DB22D6017F00ECC1E6 /* CachAble.swift */,
 				834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */,
+				834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */,
+				834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */,
 			);
 			path = codable;
 			sourceTree = "<group>";
@@ -235,8 +241,10 @@
 			files = (
 				834992DE22D6084D00ECC1E6 /* DGMemoryCache.swift in Sources */,
 				834992DC22D6017F00ECC1E6 /* CachAble.swift in Sources */,
+				834992FE22DC99AE00ECC1E6 /* CZDiskCache.swift in Sources */,
 				834992C422D5E8BA00ECC1E6 /* ViewController.swift in Sources */,
 				834992DA22D5FF2800ECC1E6 /* Recordable.swift in Sources */,
+				834992FC22DC1F7800ECC1E6 /* CZMemoryCache.swift in Sources */,
 				834992C222D5E8BA00ECC1E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

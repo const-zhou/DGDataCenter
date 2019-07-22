@@ -4,4 +4,5 @@ use_frameworks!
 
 target 'DGDataCenter' do
     pod 'YYCache'
+    pod 'RxSwift'
 end

@@ -170,6 +170,7 @@ class CZMemoryCache {
         } else if _lruCache.totalCount <= countLimit {
             finish = true
         }
+        _lock.unlock()
         if finish {
             return
         }
@@ -302,7 +303,8 @@ extension CZMemoryCache {
             node.time = now
             node.key = key
             node.value = object
-            _lruCache.bringNodeToHead(node: node)
+            _lruCache.nodeDictionary[key] = node
+            _lruCache.insertNodeAtHead(node: node)
         }
         
         if _lruCache.totalCost > costLimit {

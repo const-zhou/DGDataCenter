@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		362A52567E746A408F50BABD /* Pods_DGDataCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9E1A99F84016E40DBFEFFBD /* Pods_DGDataCenter.framework */; };
+		8339FA1F22DF1A3F002DA2D4 /* CZCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339FA1E22DF1A3F002DA2D4 /* CZCache.swift */; };
+		8339FA2322E1B52D002DA2D4 /* CZRxSwiftCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8339FA2222E1B52D002DA2D4 /* CZRxSwiftCache.swift */; };
 		834992C222D5E8BA00ECC1E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992C122D5E8BA00ECC1E6 /* AppDelegate.swift */; };
 		834992C422D5E8BA00ECC1E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992C322D5E8BA00ECC1E6 /* ViewController.swift */; };
 		834992C722D5E8BA00ECC1E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834992C522D5E8BA00ECC1E6 /* Main.storyboard */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		34EB634394E402D24F71FBF7 /* Pods-DGDataCenter.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DGDataCenter.release.xcconfig"; path = "Pods/Target Support Files/Pods-DGDataCenter/Pods-DGDataCenter.release.xcconfig"; sourceTree = "<group>"; };
+		8339FA1E22DF1A3F002DA2D4 /* CZCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZCache.swift; sourceTree = "<group>"; };
+		8339FA2222E1B52D002DA2D4 /* CZRxSwiftCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZRxSwiftCache.swift; sourceTree = "<group>"; };
 		834992BE22D5E8BA00ECC1E6 /* DGDataCenter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DGDataCenter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		834992C122D5E8BA00ECC1E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		834992C322D5E8BA00ECC1E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				834992D422D5EAD100ECC1E6 /* codable */,
+				8339FA2222E1B52D002DA2D4 /* CZRxSwiftCache.swift */,
 			);
 			path = classes;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 				834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */,
 				834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */,
 				834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */,
+				8339FA1E22DF1A3F002DA2D4 /* CZCache.swift */,
 			);
 			path = codable;
 			sourceTree = "<group>";
@@ -219,12 +225,14 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-DGDataCenter/Pods-DGDataCenter-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,11 +248,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				834992DE22D6084D00ECC1E6 /* DGMemoryCache.swift in Sources */,
+				8339FA1F22DF1A3F002DA2D4 /* CZCache.swift in Sources */,
 				834992DC22D6017F00ECC1E6 /* CachAble.swift in Sources */,
 				834992FE22DC99AE00ECC1E6 /* CZDiskCache.swift in Sources */,
 				834992C422D5E8BA00ECC1E6 /* ViewController.swift in Sources */,
 				834992DA22D5FF2800ECC1E6 /* Recordable.swift in Sources */,
 				834992FC22DC1F7800ECC1E6 /* CZMemoryCache.swift in Sources */,
+				8339FA2322E1B52D002DA2D4 /* CZRxSwiftCache.swift in Sources */,
 				834992C222D5E8BA00ECC1E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

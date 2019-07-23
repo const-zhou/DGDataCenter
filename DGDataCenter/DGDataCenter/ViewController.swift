@@ -34,14 +34,12 @@ extension Test {
 class ViewController: UIViewController {
     let cache = CZCache()
     private var publish: PublishSubject<Int> = PublishSubject()
+    
+    var disposeBag = CZDisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
-        for i in 0..<10 {
-            print(drand48())
-        }
         
         
         let person = Person(firstName: "zhou", lastName: "dg", age: 18)
@@ -69,20 +67,35 @@ class ViewController: UIViewController {
         let y: String = cache.diskCache.fetchString(key: "2") ?? ""
         print(y)
         
-        NSLog("begin1")
-        var time = CFAbsoluteTimeGetCurrent()
-        for _ in 0..<10 {
-            let time = CFAbsoluteTimeGetCurrent()
-            for i in 0..<10000 {
-                if let ob: [Int] = self.cache.object(key: "\(i)") {
-//                    print(ob)
-                }
-            }
-            NSLog("cost: \(CFAbsoluteTimeGetCurrent() - time)")
-        }
-        print("total = \(CFAbsoluteTimeGetCurrent() - time)")
-
-        print("mem count = \(cache.memCache.totalCount)")
+        
+        
+        cache.subscribe(key: "2") { (oldVal: String?, newVal: String) in
+            print("old: \(oldVal)")
+            print("new: \(newVal)")
+        }.disposed(by: disposeBag)
+        
+        cache.setObject(key: "2", value: "11")
+        
+        disposeBag = CZDisposeBag()
+        
+        cache.setObject(key: "2", value: "588")
+        
+        
+        
+//        NSLog("begin1")
+//        var time = CFAbsoluteTimeGetCurrent()
+//        for _ in 0..<10 {
+//            let time = CFAbsoluteTimeGetCurrent()
+//            for i in 0..<10000 {
+//                if let ob: [Int] = self.cache.object(key: "\(i)") {
+////                    print(ob)
+//                }
+//            }
+//            NSLog("cost: \(CFAbsoluteTimeGetCurrent() - time)")
+//        }
+//        print("total = \(CFAbsoluteTimeGetCurrent() - time)")
+//
+//        print("mem count = \(cache.memCache.totalCount)")
 //
 //
 //        time = CFAbsoluteTimeGetCurrent()

@@ -305,7 +305,7 @@ extension _CZSqliteDataBbase {
         var items: [_CZStorageItem] = []
         repeat {
             guard sqlite3_step(stmt) == SQLITE_ROW else {
-                throw SQLiteError.Step(message: errorMessage)
+                break
             }
             var item = _CZStorageItem()
             item.key = String(cString: sqlite3_column_text(stmt, 0))

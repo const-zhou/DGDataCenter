@@ -81,6 +81,19 @@ class ViewController: UIViewController {
         cache.setObject(key: "2", value: "588")
         
         
+//        cache.setObject(key: "xx", value: true)
+//        cache.setObject(key: "yy", value: 23)
+//        cache.setObject(key: "zz", value: 12.00087)
+        
+        let xx: Bool? = cache.object(key: "xx")
+        let yy: Int? = cache.object(key: "yy")
+        let zz: Float? = cache.object(key: "zz")
+        
+        print(xx)
+        print(yy)
+        print(zz)
+        
+        
         
 //        NSLog("begin1")
 //        var time = CFAbsoluteTimeGetCurrent()

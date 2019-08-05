@@ -30,10 +30,47 @@ class CZCache {
         if let object = memCache.objectForKey(key: key) as? T {
             return object
         }
+        
         if T.self == String.self {
             if let value = diskCache.fetchString(key: key) as? T {
                 memCache.setObject(key: key, object: value)
                 return value
+            }
+            return nil
+        }
+        
+        if T.self == Bool.self {
+            if let value = diskCache.fetchString(key: key) {
+                memCache.setObject(key: key, object: value)
+                if value == "true" {
+                    return true as! T
+                } else {
+                    return false as! T
+                }
+            }
+            return nil
+        }
+        
+        if T.self == Int.self {
+            if let value = diskCache.fetchString(key: key) {
+                memCache.setObject(key: key, object: value)
+                return Int(value) as! T
+            }
+            return nil
+        }
+        
+        if T.self == Float.self {
+            if let value = diskCache.fetchString(key: key) {
+                memCache.setObject(key: key, object: value)
+                return Float(value) as! T
+            }
+            return nil
+        }
+        
+        if T.self == Double.self {
+            if let value = diskCache.fetchString(key: key) {
+                memCache.setObject(key: key, object: value)
+                return Double(value) as! T
             }
             return nil
         }
@@ -55,16 +92,35 @@ class CZCache {
         let oldVal = memCache.objectForKey(key: key) as? T
         
         memCache.setObject(key: key, object: value)
-        if T.self == String.self {
+        
+        switch value {
+        case is String:
             diskCache.setObject(key: key, jsonString: value as! String)
-        } else if T.self == Data.self {
+        case is Data:
             diskCache.setObject(key: key, data: value as! Data)
-        } else {
+        case is Bool:
+            diskCache.setObject(key: key, jsonString: "\(value)")
+        case is Float, is Double:
+            diskCache.setObject(key: key, jsonString: "\(value)")
+        case is Int:
+            diskCache.setObject(key: key, jsonString: "\(value)")
+        default:
             if let data = try? JSONEncoder().encode(value) {
                 let jsonString = String(data: data, encoding: .utf8)
                 diskCache.setObject(key: key, jsonString: jsonString ?? "")
             }
         }
+        
+//        if T.self == String.self {
+//            diskCache.setObject(key: key, jsonString: value as! String)
+//        } else if T.self == Data.self {
+//            diskCache.setObject(key: key, data: value as! Data)
+//        } else {
+//            if let data = try? JSONEncoder().encode(value) {
+//                let jsonString = String(data: data, encoding: .utf8)
+//                diskCache.setObject(key: key, jsonString: jsonString ?? "")
+//            }
+//        }
         
         _dispatchBlockQueue.async { [weak self] in
             if let list = self?._kvoBlockMap[key] {
@@ -122,8 +178,7 @@ class CZObserver<T: Codable>: CZDisposeAble {
         block?(oldVal, newVal)
     }
     
-    func dispose() {
-        key = ""
+    func dispose() {        key = ""
         block = nil
     }
     

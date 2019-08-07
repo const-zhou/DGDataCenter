@@ -9,15 +9,21 @@
 import Foundation
 import RxSwift
 
-extension ObservableType where Element == Any {
-    func cache(key: String, cache: CZCache)-> Observable<Any> {
+extension ObservableType where E == Any {
+    func cache(key: String, cache: CZCache)-> Observable<(jsonData:Any, cache: Bool)> {
         let cacheData: Data = cache.object(key: key) ?? Data()
-        return self.startWith(cacheData).map({ data in
-            if let tempData = data as? Data {
-                cache.setObject(key: key, value: tempData)
+        let json = try? JSONSerialization.jsonObject(with: cacheData, options: [])
+        return self.map({ jsonObject in
+            if let dic = jsonObject as? [String: Any] {
+                if (dic["code"] as? Int ?? 0) != 200 {
+                    return (jsonObject, false)
+                }
             }
-            return data
-        })
+            if let data = try? JSONSerialization.data(withJSONObject: jsonObject, options: []) {
+                cache.setObject(key: key, value: data)
+            }
+            return (jsonObject, false)
+        }).startWith((json, true))
     }
 }
 

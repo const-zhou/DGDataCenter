@@ -114,7 +114,7 @@ class CZMemoryCache {
     var countLimit = UInt.max
     var costLimit = Float.Magnitude.greatestFiniteMagnitude
     var ageLimit = Double.greatestFiniteMagnitude
-    var autoTrimInterval: TimeInterval = 5.0
+    var autoTrimInterval: TimeInterval = 20.0
     
     private func _trimRecoursively() {
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + autoTrimInterval) { [weak self] in
@@ -224,9 +224,7 @@ class CZMemoryCache {
     init() {
         NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: nil) { [weak self] _ in
             guard let `self` = self else {return}
-            self._trimToCount(countLimit: self.countLimit)
-            self._trimToCost(costLimit: self.costLimit)
-            self._trimToAge(ageLimit: self.ageLimit)
+            self._trimInBackground()
         }
         
         NotificationCenter.default.addObserver(forName: UIApplication.didReceiveMemoryWarningNotification, object: nil, queue: nil) { [weak self] _ in
@@ -330,7 +328,7 @@ extension CZMemoryCache {
     
     func removeAllObjects() {
         _lock.lock()
-        _lruCache.removeTailNode()
+        _lruCache.removeAll()
         _lock.unlock()
     }
     

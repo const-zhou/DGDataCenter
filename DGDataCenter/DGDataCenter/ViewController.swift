@@ -36,11 +36,13 @@ class ViewController: UIViewController {
     private var publish: PublishSubject<Int> = PublishSubject()
     
     var disposeBag = CZDisposeBag()
+    
+    let op = OperationQueue()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        op.maxConcurrentOperationCount = -1
         
         let person = Person(firstName: "zhou", lastName: "dg", age: 18)
 //        cache.setObject(key: "person", value: person)
@@ -56,7 +58,7 @@ class ViewController: UIViewController {
         if let persons: [Person] = cache.object(key: "23") {
             print(persons)
         }
-//        cache.memCache.countLimit = 50
+        cache.memCache.countLimit = 50
         cache.setObject(key: "2", value: String.init("hello world"))
         cache.setObject(key: "1", value: [person, person, person])
 
@@ -93,53 +95,9 @@ class ViewController: UIViewController {
         print(yy)
         print(zz)
         
+        threadReadTest()
+        threadWriteTest()
         
-        
-//        NSLog("begin1")
-//        var time = CFAbsoluteTimeGetCurrent()
-//        for _ in 0..<10 {
-//            let time = CFAbsoluteTimeGetCurrent()
-//            for i in 0..<10000 {
-//                if let ob: [Int] = self.cache.object(key: "\(i)") {
-////                    print(ob)
-//                }
-//            }
-//            NSLog("cost: \(CFAbsoluteTimeGetCurrent() - time)")
-//        }
-//        print("total = \(CFAbsoluteTimeGetCurrent() - time)")
-//
-//        print("mem count = \(cache.memCache.totalCount)")
-//
-//
-//        time = CFAbsoluteTimeGetCurrent()
-//        NSLog("begin2 ---------------------")
-//        for _ in 0..<10 {
-//            DispatchQueue.global().async {
-//                let time = CFAbsoluteTimeGetCurrent()
-//                for i in 0..<10000 {
-//                    if let ob: [Int] = self.cache.object(key: "\(i)") {
-//
-//                    }
-//                }
-//                NSLog("cost: \(CFAbsoluteTimeGetCurrent() - time)")
-//            }
-//        }
-//        print("total = \(CFAbsoluteTimeGetCurrent() - time)")
-        
-        
-//        _ = publish.asObserver().filter{print($0); return true}.startWith(3).subscribe(onNext: { item in
-//            print(item)
-//        })
-        
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 5.0) { [weak self] in
-            self?.publish.onNext(5)
-        }
-        
-        
-        
-        test()
-        sleep(2)
-        test()
         
     }
     
@@ -153,6 +111,27 @@ class ViewController: UIViewController {
         
         DispatchQueue.global().asyncAfter(deadline: DispatchTime.now() + 1) { [weak self] in
             self?.publish.onNext(100)
+        }
+    }
+    
+    //多线程写测试
+    func threadWriteTest() {
+        for i in 0..<1000 {
+            op.addOperation {
+                self.cache.setObject(key: "\(i)", value: i)
+            }
+        }
+    }
+    
+    //多线程读测试
+    func threadReadTest() {
+        for i in 0..<1000 {
+            op.addOperation {
+                let i: Int = self.cache.object(key: "\(i)") ?? 1
+                if i % 10 == 0 {
+                    print(i)
+                }
+            }
         }
     }
 }

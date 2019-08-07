@@ -43,9 +43,9 @@ class CZCache {
             if let value = diskCache.fetchString(key: key) {
                 memCache.setObject(key: key, object: value)
                 if value == "true" {
-                    return true as! T
+                    return true as? T
                 } else {
-                    return false as! T
+                    return false as? T
                 }
             }
             return nil
@@ -54,7 +54,7 @@ class CZCache {
         if T.self == Int.self {
             if let value = diskCache.fetchString(key: key) {
                 memCache.setObject(key: key, object: value)
-                return Int(value) as! T
+                return Int(value) as? T
             }
             return nil
         }
@@ -62,7 +62,7 @@ class CZCache {
         if T.self == Float.self {
             if let value = diskCache.fetchString(key: key) {
                 memCache.setObject(key: key, object: value)
-                return Float(value) as! T
+                return Float(value) as? T
             }
             return nil
         }
@@ -70,14 +70,14 @@ class CZCache {
         if T.self == Double.self {
             if let value = diskCache.fetchString(key: key) {
                 memCache.setObject(key: key, object: value)
-                return Double(value) as! T
+                return Double(value) as? T
             }
             return nil
         }
         
         if let data = diskCache.fetchObject(key: key) {
             if T.self == Data.self {
-                return data as! T
+                return data as? T
             }
             let value = try? JSONDecoder().decode(T.self, from: data)
             if value != nil {
@@ -110,17 +110,6 @@ class CZCache {
                 diskCache.setObject(key: key, jsonString: jsonString ?? "")
             }
         }
-        
-//        if T.self == String.self {
-//            diskCache.setObject(key: key, jsonString: value as! String)
-//        } else if T.self == Data.self {
-//            diskCache.setObject(key: key, data: value as! Data)
-//        } else {
-//            if let data = try? JSONEncoder().encode(value) {
-//                let jsonString = String(data: data, encoding: .utf8)
-//                diskCache.setObject(key: key, jsonString: jsonString ?? "")
-//            }
-//        }
         
         _dispatchBlockQueue.async { [weak self] in
             if let list = self?._kvoBlockMap[key] {

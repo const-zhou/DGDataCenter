@@ -15,9 +15,6 @@
 		834992C722D5E8BA00ECC1E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834992C522D5E8BA00ECC1E6 /* Main.storyboard */; };
 		834992C922D5E8BB00ECC1E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 834992C822D5E8BB00ECC1E6 /* Assets.xcassets */; };
 		834992CC22D5E8BB00ECC1E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 834992CA22D5E8BB00ECC1E6 /* LaunchScreen.storyboard */; };
-		834992DA22D5FF2800ECC1E6 /* Recordable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992D922D5FF2800ECC1E6 /* Recordable.swift */; };
-		834992DC22D6017F00ECC1E6 /* CachAble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992DB22D6017F00ECC1E6 /* CachAble.swift */; };
-		834992DE22D6084D00ECC1E6 /* DGMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */; };
 		834992FC22DC1F7800ECC1E6 /* CZMemoryCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */; };
 		834992FE22DC99AE00ECC1E6 /* CZDiskCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */; };
 /* End PBXBuildFile section */
@@ -33,9 +30,6 @@
 		834992C822D5E8BB00ECC1E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		834992CB22D5E8BB00ECC1E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		834992CD22D5E8BB00ECC1E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		834992D922D5FF2800ECC1E6 /* Recordable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recordable.swift; sourceTree = "<group>"; };
-		834992DB22D6017F00ECC1E6 /* CachAble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CachAble.swift; sourceTree = "<group>"; };
-		834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DGMemoryCache.swift; sourceTree = "<group>"; };
 		834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZMemoryCache.swift; sourceTree = "<group>"; };
 		834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CZDiskCache.swift; sourceTree = "<group>"; };
 		A9E1A99F84016E40DBFEFFBD /* Pods_DGDataCenter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DGDataCenter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -106,9 +100,6 @@
 		834992D422D5EAD100ECC1E6 /* codable */ = {
 			isa = PBXGroup;
 			children = (
-				834992D922D5FF2800ECC1E6 /* Recordable.swift */,
-				834992DB22D6017F00ECC1E6 /* CachAble.swift */,
-				834992DD22D6084D00ECC1E6 /* DGMemoryCache.swift */,
 				834992FB22DC1F7800ECC1E6 /* CZMemoryCache.swift */,
 				834992FD22DC99AE00ECC1E6 /* CZDiskCache.swift */,
 				8339FA1E22DF1A3F002DA2D4 /* CZCache.swift */,
@@ -247,12 +238,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				834992DE22D6084D00ECC1E6 /* DGMemoryCache.swift in Sources */,
 				8339FA1F22DF1A3F002DA2D4 /* CZCache.swift in Sources */,
-				834992DC22D6017F00ECC1E6 /* CachAble.swift in Sources */,
 				834992FE22DC99AE00ECC1E6 /* CZDiskCache.swift in Sources */,
 				834992C422D5E8BA00ECC1E6 /* ViewController.swift in Sources */,
-				834992DA22D5FF2800ECC1E6 /* Recordable.swift in Sources */,
 				834992FC22DC1F7800ECC1E6 /* CZMemoryCache.swift in Sources */,
 				8339FA2322E1B52D002DA2D4 /* CZRxSwiftCache.swift in Sources */,
 				834992C222D5E8BA00ECC1E6 /* AppDelegate.swift in Sources */,
@@ -402,14 +390,17 @@
 			baseConfigurationReference = CD078ED2039F18FB3694887C /* Pods-DGDataCenter.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CMSTCYA28N;
 				INFOPLIST_FILE = DGDataCenter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kid.DGDataCenter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.putao.KidLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = KidLearning_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -420,14 +411,17 @@
 			baseConfigurationReference = 34EB634394E402D24F71FBF7 /* Pods-DGDataCenter.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = CMSTCYA28N;
 				INFOPLIST_FILE = DGDataCenter/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.kid.DGDataCenter;
+				PRODUCT_BUNDLE_IDENTIFIER = com.putao.KidLearning;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = KidLearning_Development;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

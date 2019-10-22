@@ -9,7 +9,7 @@
 import Foundation
 import RxSwift
 
-extension ObservableType where E == Any {
+extension ObservableType where Element == Any {
     func cache(key: String, cache: CZCache)-> Observable<(jsonData:Any, cache: Bool)> {
         let cacheData: Data = cache.object(key: key) ?? Data()
         let json = try? JSONSerialization.jsonObject(with: cacheData, options: [])

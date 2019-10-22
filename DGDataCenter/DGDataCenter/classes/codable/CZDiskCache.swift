@@ -26,7 +26,7 @@ struct _CZStorageItem {
 
 extension _CZStorageItem: SQLTable {
     static var createStatement: String {
-        return "create table if not exists manifest (key text, filename text, size integer, inline_data blob, modification_time integer, last_access_time integer, primary key(key)); create index if not exists last_access_time_idx on manifest(last_access_time);"
+        return "pragma journal_mode = wal; pragma synchronous = normal; create table if not exists manifest (key text, filename text, size integer, inline_data blob, modification_time integer, last_access_time integer, primary key(key)); create index if not exists last_access_time_idx on manifest(last_access_time);"
     }
 }
 
@@ -406,6 +406,7 @@ class CZDiskCache {
         
         if let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.cachesDirectory, .userDomainMask, true).first {
             let sqlitePath = path + "/com.cz.cache/com.cz.cache.sqlite"
+            print(sqlitePath)
             let fileManager = FileManager.default
             if !fileManager.fileExists(atPath: sqlitePath)  {
                 try? fileManager.createDirectory(atPath: path + "/com.cz.cache", withIntermediateDirectories: true, attributes: nil)
